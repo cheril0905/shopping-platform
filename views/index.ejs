@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scatch</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      gap: 80px;
+      padding-top: 80px;
+    }
+    .form-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 40px 32px;
+      min-width: 350px;
+    }
+    .form-section h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .form-section .brand {
+      color: #4a90e2;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .form-section label {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .form-section input {
+      width: 100%;
+      padding: 12px 10px;
+      margin-bottom: 18px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f7f7f7;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .form-section input:focus {
+      border: 1.5px solid #4a90e2;
+      background: #fff;
+    }
+    .form-section button {
+      width: 100%;
+      padding: 12px 0;
+      background: linear-gradient(90deg, #4a90e2 60%, #357ab8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-section button:hover {
+      background: linear-gradient(90deg, #357ab8 60%, #4a90e2 100%);
+    }
+    .form-section .subtitle {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Registration Form -->
+    <div class="form-section">
+      <h2>welcome to <span class="brand">Scatch</span></h2>
+      <div class="subtitle">create your account</div>
+      <form action="/users/register" method="POST">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Create My Account</button>
+      </form>
+    </div>
+    <!-- Login Form -->
+    <div class="form-section">
+      <div style="height: 32px;"></div>
+      <h3 style="margin-bottom: 1.5rem;">Login Your Account</h3>
+      <form action="/users/login" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

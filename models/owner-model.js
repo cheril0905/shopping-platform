@@ -9,8 +9,8 @@ const ownerSchema=mongoose.Schema({
     },
     email:String,
     password:String,
-   
-    isAdmin:Boolean,
+   isAdmin:Boolean,
+    
     products:{
         type:Array,
         default:[]

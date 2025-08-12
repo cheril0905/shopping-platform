@@ -3,9 +3,12 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const db=require("./config/mongoose-connection")
+const indexRouter = require("./routes/index.js");
 const ownersRouter = require("./routes/ownersRouter");
 const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
+
+require("dotenv").config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,9 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use("/owners",ownersRouter);
-app.use("/users",usersRouter);
-app.use("/products",productsRouter);
+
+app.use("/", indexRouter);
+app.use("/owners", ownersRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
+
 
 
 // Start the server
