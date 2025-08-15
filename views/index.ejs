@@ -1,117 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scatch</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      gap: 80px;
-      padding-top: 80px;
-    }
-    .form-section {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      padding: 40px 32px;
-      min-width: 350px;
-    }
-    .form-section h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .form-section .brand {
-      color: #4a90e2;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-decoration: none;
-    }
-    .form-section label {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .form-section input {
-      width: 100%;
-      padding: 12px 10px;
-      margin-bottom: 18px;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      font-size: 1rem;
-      background: #f7f7f7;
-      outline: none;
-      transition: border 0.2s;
-    }
-    .form-section input:focus {
-      border: 1.5px solid #4a90e2;
-      background: #fff;
-    }
-    .form-section button {
-      width: 100%;
-      padding: 12px 0;
-      background: linear-gradient(90deg, #4a90e2 60%, #357ab8 100%);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .form-section button:hover {
-      background: linear-gradient(90deg, #357ab8 60%, #4a90e2 100%);
-    }
-    .form-section .subtitle {
-      font-size: 1.1rem;
-      color: #444;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-    }
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        padding-top: 40px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Registration Form -->
-    <div class="form-section">
-      <h2>welcome to <span class="brand">Scatch</span></h2>
-      <div class="subtitle">create your account</div>
-      <form action="/users/register" method="POST">
-        <input type="text" name="fullname" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Create My Account</button>
-      </form>
+<%- include('./partials/header') %>
+
+<% if(error.length>0){ %>
+<div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-red-500 shadow-lg animate-bounce">
+    <span class="text-white font-medium"><%= error %></span>
+</div>
+<% } %>
+
+<% if (success.length > 0) { %>
+<div class="absolute top-5 left-1/2 -translate-x-1/2 p-3 rounded-md bg-green-500 shadow-lg animate-bounce">
+    <span class="text-white font-medium"><%= success %></span>
+</div>
+<% } %>
+
+<div class="w-full min-h-screen flex flex-col md:flex-row items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1600&q=80');">
+    <!-- Semi-transparent overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- Register Section -->
+    <div class="relative md:w-1/2 flex items-center justify-center p-8 animate-fadeInLeft">
+        <div class="w-full max-w-md bg-white rounded-md shadow-lg p-8">
+            <h3 class="text-3xl font-bold mb-2 text-gray-900 tracking-wide uppercase">
+                Create Account
+            </h3>
+            <form autocomplete="off" action="/users/register" method="post" class="space-y-4">
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" type="text" placeholder="Full Name" name="fullname">
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" type="email" placeholder="Email" name="email">
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" type="password" placeholder="Password" name="password">
+                <button class="w-full py-3 bg-black text-white uppercase font-semibold hover:bg-gray-800 transition">Create My Account</button>
+            </form>
+        </div>
     </div>
-    <!-- Login Form -->
-    <div class="form-section">
-      <div style="height: 32px;"></div>
-      <h3 style="margin-bottom: 1.5rem;">Login Your Account</h3>
-      <form action="/users/login" method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
+
+    <!-- Login Section -->
+    <div class="relative md:w-1/2 flex items-center justify-center p-8 animate-fadeInRight">
+        <div class="w-full max-w-md bg-white rounded-md shadow-lg p-8">
+            <h4 class="text-3xl font-bold mb-6 text-gray-900 tracking-wide uppercase">Login</h4>
+            <form autocomplete="off" action="/users/login" method="post" class="space-y-4">
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" type="email" placeholder="Email" name="email">
+                <input class="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-black focus:ring-1 focus:ring-black outline-none transition" type="password" placeholder="Password" name="password">
+                <button class="w-full py-3 bg-black text-white uppercase font-semibold hover:bg-gray-800 transition">Login</button>
+            </form>
+        </div>
     </div>
-  </div>
-</body>
-</html>
+</div>
+
+<style>
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-fadeInLeft { animation: fadeInLeft 1s ease forwards; }
+.animate-fadeInRight { animation: fadeInRight 1s ease forwards; }
+</style>
+
+<%- include('./partials/footer') %>

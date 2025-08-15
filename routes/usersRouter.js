@@ -5,7 +5,8 @@ const Joi=require("joi")
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken')
 const {generateToken}=require("../utils/generateToken")
-const{registeredUser}=require("../controllers/authController")
+const{registeredUser,loginUser}=require("../controllers/authController");
+const isLoggedIn = require('../middlewares/isLoggedIn');
 
 // Example: GET /users
 router.get('/', (req, res) => {
@@ -22,4 +23,7 @@ const registerSchema = Joi.object({
 // POST /users/register with Joi validation
 router.post('/register',registeredUser);
 
+
+
+router.post('/login',loginUser);
 module.exports = router;

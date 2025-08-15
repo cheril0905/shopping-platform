@@ -7,12 +7,29 @@ const indexRouter = require("./routes/index.js");
 const ownersRouter = require("./routes/ownersRouter");
 const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
+const expressSession = require("express-session");
+const flash = require("connect-flash");
 
 require("dotenv").config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const JWT_SECRET = "your_jwt_secret"; // Use env variable in production
+
+app.use(expressSession({
+    secret: process.env.EXPRESS_KEY, // store in .env
+    resave: false,
+    saveUninitialized: false,
+    
+}));
+
+app.use(flash());
+app.use(express.static(path.join(__dirname,"public")));
+
+
+
+
+
+
 
 // Set view engine
 app.set("view engine", "ejs");
