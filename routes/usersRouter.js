@@ -27,3 +27,10 @@ router.post('/register',registeredUser);
 
 router.post('/login',loginUser);
 module.exports = router;
+
+
+router.get('/logout', isLoggedIn, (req, res) => {
+  res.cookie("token","");   // Clear JWT cookie
+  res.redirect("/");   // Redirect to index (home) page
+});
+
