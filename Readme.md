@@ -31,3 +31,44 @@ It supports user authentication, product management, and owner/admin functionali
 ```bash
 git clone https://github.com/cheril0905/shopping-platform.git
 cd shopping-platform
+## Install dependencies
+npm install
+```
+## Create a .env file in the project root
+
+Add the following variables:
+```bash
+MONGO_URI=your-mongodb-connection-string
+JWT_SECRET=your-secret-key
+SESSION_SECRET=your-session-secret
+```
+## Enable Debugging for Admin Panel
+
+To enable Admin Panel access (where the owner can add/manage products), set the debug environment variable:
+```bash
+On PowerShell (Windows)
+$env:DEBUG="development:mongoose"
+
+On Linux / macOS
+export DEBUG="development:mongoose"
+
+5. Start the development server
+npm run dev
+```
+##📦 Deployment
+
+This project can be deployed on Vercel / Render / Railway.
+Make sure to add your .env variables inside your hosting platform’s environment settings.
+
+🤝 Contributing
+
+Fork the repo
+```bash
+Create a new branch (git checkout -b feature-name)
+
+Commit your changes (git commit -m "Add new feature")
+
+Push to the branch (git push origin feature-name)
+
+Open a Pull Request
+```
